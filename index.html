@@ -10,28 +10,32 @@
     <script src="js/stringvalue.js"></script>
     <script>
         ///// Authentication Process /////
-        if (!localStorage.getItem("zalo_access_token")) {
-            let state = generate_state_param(); // for CSRF prevention
-            // Generate the code verifier and code challenge
-            let codes = generate_pkce_codes();
-            // Store the request state to be checked in auth.html
-            localStorage.setItem("zalo_auth_state", state);
-            // Store the code verifier to be used in auth.html
-            localStorage.setItem("zalo_code_verifier", codes.verifier);
-            let auth_uri = ZALO_PERMISSION_URL + "?" + new URLSearchParams({
-                app_id: APP_ID,
-                redirect_uri: APP_AUTH_URL,
-                code_challenge: codes.challenge,
-                state: state, // <- prevent CSRF
-            }).toString();
-            window.location.replace(auth_uri);
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            document.body.innerHTML = '<h1>Please use a domain.</h1>';
         } else {
-            // Store the INITIAL access token in a JavaScript constant.
-            const initialToken = localStorage.getItem("zalo_access_token");
-            alert(initialToken);
-            document.body.innerHTML = JSON.parse(initialToken).access_token;
-            // Remove the access token in localStorage
-            localStorage.removeItem("zalo_access_token");
+            if (!localStorage.getItem("zalo_access_token")) {
+                let state = generate_state_param(); // for CSRF prevention
+                // Generate the code verifier and code challenge
+                let codes = generate_pkce_codes();
+                // Store the request state to be checked in auth.html
+                localStorage.setItem("zalo_auth_state", state);
+                // Store the code verifier to be used in auth.html
+                localStorage.setItem("zalo_code_verifier", codes.verifier);
+                let auth_uri = ZALO_PERMISSION_URL + "?" + new URLSearchParams({
+                    app_id: APP_ID,
+                    redirect_uri: APP_AUTH_URL,
+                    code_challenge: codes.challenge,
+                    state: state, // <- prevent CSRF
+                }).toString();
+                window.location.replace(auth_uri);
+            } else {
+                // Store the INITIAL access token in a JavaScript constant.
+                const initialToken = localStorage.getItem("zalo_access_token");
+                alert(initialToken);
+                document.body.innerHTML = JSON.parse(initialToken).access_token;
+                // Remove the access token in localStorage
+                localStorage.removeItem("zalo_access_token");
+            }
         }
     </script>
     <!-- START THE MAIN APP -->
