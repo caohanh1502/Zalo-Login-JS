@@ -12,6 +12,6 @@ No server required so the option "Check secret key when calling api get access t
 - Go to the login settings (```https://developers.zalo.me/app/<Your_App_ID>/login```) and set "Callback URL" to point to ```auth.html``` 
 - Upload files to your web hosting, then verify the domain: ```https://developers.zalo.me/app/<Your_App_ID>/verify-domain```
 
-### Get rid of the saved access token (force logout):
+### Logout:
 - Go to Zalo web: https://chat.zalo.me
 - Login, then logout.
