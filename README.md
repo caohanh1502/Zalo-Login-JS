@@ -1,5 +1,6 @@
 # Using-Zalo-API
 Log in to your Zalo application with a Zalo account, using html and javascript. Return an access token if login succesfully.
+
 Demo: https://caohanh1502.github.io/Using-Zalo-API
 ## How to:
 - Go to Zalo Dev page: https://developers.zalo.me/apps
