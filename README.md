@@ -8,8 +8,8 @@ Demo: https://caohanh1502.github.io/Zalo-Login-JS
 No server required so the option "Check secret key when calling api get access token" need to be turned off in the login settings.
 ## How to:
 - Go to Zalo Dev page: https://developers.zalo.me/apps
-- Copy the app ID of your application and paste it into stringvalue.js
-- Set "Callback URL" to point to auth.html: ```https://developers.zalo.me/app/<Your_App_ID>login```
+- Copy the app ID of your application and paste it into ```stringvalue.js```
+- Set "Callback URL" to point to ```auth.html```: ```https://developers.zalo.me/app/<Your_App_ID>login```
 - Upload files to your web hosting, then verify the domain: ```https://developers.zalo.me/app/<Your_App_ID>/verify-domain```
 
 ### Get rid of the saved access token (force logout):
