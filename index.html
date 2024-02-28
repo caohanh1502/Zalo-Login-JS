@@ -32,7 +32,7 @@
                 // Store the INITIAL access token in a JavaScript constant.
                 const initialToken = localStorage.getItem("zalo_access_token");
                 alert(initialToken);
-                document.body.innerHTML = JSON.parse(initialToken).access_token;
+                document.body.innerHTML = "access_token = " + JSON.parse(initialToken).access_token;
                 // Remove the access token in localStorage
                 localStorage.removeItem("zalo_access_token");
             }
