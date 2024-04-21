@@ -6,6 +6,8 @@
     <title>Index page</title>
 </head>
 <body>
+    <div id="user_token"></div>
+    <div id="user_info"></div>
     <script src="js/crypto.js"></script>
     <script src="js/stringvalue.js"></script>
     <script>
@@ -32,7 +34,38 @@
                 // Store the INITIAL access token in a JavaScript constant.
                 const initialToken = localStorage.getItem("zalo_access_token");
                 alert(initialToken);
-                document.body.innerHTML = "access_token = " + JSON.parse(initialToken).access_token;
+                document.getElementById("user_token").innerHTML = "access_token = " + JSON.parse(initialToken).access_token;
+
+                fetch("https://graph.zalo.me/v2.0/me?fields=id,name,picture",
+                    {
+                        headers: {
+                            access_token: initialToken
+                        }
+                }).then(response => response.json())
+                .then(data => {
+                    let user_info = "";
+                    if (data.message.toLowerCase() === "success") {
+                        user_info = `<table style="border: none;">
+                                        <tr>
+                                            <td>id:</td>
+                                            <td>${data.id}<td>
+                                        </tr>
+                                        <tr>
+                                            <td>name:</td>
+                                            <td>${data.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>picture:</td>
+                                            <td><img src="${data.picture.data.url}" alt="avatar" width="120" height="120"></td>
+                                        </tr>
+                                    </table>`;
+                    } else {
+                        user_info = "Cannot get user info";
+                    }
+                    document.getElementById("user_info").innerHTML = user_info;
+                });
+
+                
                 // Remove the access token in localStorage
                 localStorage.removeItem("zalo_access_token");
             }
