@@ -15,3 +15,6 @@ No server required so the option "Check secret key when calling api get access t
 ### Logout:
 - Go to Zalo web: https://chat.zalo.me
 - Login, then logout.
+
+### Credits:
+Most of the codes are based on this post: https://nguyenphudung.com/huong-dan-lay-access-token-v4-qua-zalo-api-php
