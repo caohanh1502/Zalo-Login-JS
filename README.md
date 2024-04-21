@@ -9,8 +9,8 @@ No server required so the option "Check secret key when calling api get access t
 ## How to:
 - Go to Zalo Dev page: https://developers.zalo.me/apps
 - Copy the app ID of your application and paste it into ```stringvalue.js```
-- Go to the login settings (```https://developers.zalo.me/app/<Your_App_ID>/login```) and set "Callback URL" to point to ```auth.html``` 
 - Upload files to your web hosting, then verify the domain: ```https://developers.zalo.me/app/<Your_App_ID>/verify-domain```
+- Go to the login settings (```https://developers.zalo.me/app/<Your_App_ID>/login```) and set "Callback URL" to point to ```auth.html``` 
 
 ### Logout:
 - Go to Zalo web: https://chat.zalo.me
