@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="user_token"></div>
-    <div id="user_info"></div>
+    <div id="user_info" style="margin-top:20px;"></div>
     <script src="js/crypto.js"></script>
     <script src="js/stringvalue.js"></script>
     <script>
@@ -34,18 +34,20 @@
                 // Store the INITIAL access token in a JavaScript constant.
                 const initialToken = localStorage.getItem("zalo_access_token");
                 alert(initialToken);
+                const user_access_token = JSON.parse(initialToken).access_token;
                 document.getElementById("user_token").innerHTML = "access_token = " + JSON.parse(initialToken).access_token;
 
+                // Display information of user
                 fetch("https://graph.zalo.me/v2.0/me?fields=id,name,picture",
                     {
                         headers: {
-                            access_token: initialToken
+                            access_token: user_access_token
                         }
                 }).then(response => response.json())
                 .then(data => {
                     let user_info = "";
                     if (data.message.toLowerCase() === "success") {
-                        user_info = `<table style="border: none;">
+                        user_info = `<table style="border:none;border-top:1px solid black;">
                                         <tr>
                                             <td>id:</td>
                                             <td>${data.id}<td>
@@ -64,7 +66,6 @@
                     }
                     document.getElementById("user_info").innerHTML = user_info;
                 });
-
                 
                 // Remove the access token in localStorage
                 localStorage.removeItem("zalo_access_token");
