@@ -13,8 +13,8 @@ No server required so the option "Check secret key when calling api get access t
 - Go to the login settings (```https://developers.zalo.me/app/<Your_App_ID>/login```) and set "Callback URL" to point to ```auth.html``` 
 
 ### Logout:
-- Go to Zalo web: https://chat.zalo.me
-- Login, then logout.
+- Go to Zalo dev page: https://developers.zalo.me
+- Logout (hover over your profile image at top right to see the option).
 
 ### Credits:
 Most of the codes are based on this post: https://nguyenphudung.com/huong-dan-lay-access-token-v4-qua-zalo-api-php
