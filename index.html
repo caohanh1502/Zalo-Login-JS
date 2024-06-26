@@ -35,7 +35,7 @@
                 const initialToken = localStorage.getItem("zalo_access_token");
                 alert(initialToken);
                 const user_access_token = JSON.parse(initialToken).access_token;
-                document.getElementById("user_token").innerHTML = "access_token = " + JSON.parse(initialToken).access_token;
+                document.getElementById("user_token").innerHTML = "access_token = " + user_access_token;
 
                 // Display information of user
                 fetch("https://graph.zalo.me/v2.0/me?fields=id,name,picture",
